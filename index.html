@@ -1,746 +1,691 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Deepa ananthan AR - Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deepa Ananthan AR | AI Engineer & GenAI Developer</title>
+  
+  <!-- SEO / LinkedIn Preview -->
+  <meta name="description" content="Deepa Ananthan AR – AI Engineer & GenAI Developer specializing in LLMs, RAG systems, FastAPI, and cloud‑deployed ML solutions." />
+  <meta name="keywords" content="AI Engineer, Generative AI, LLM, RAG, FastAPI, Python, Machine Learning, Portfolio" />
+  <meta property="og:title" content="Deepa Ananthan AR | AI Engineer & GenAI Developer" />
+  <meta property="og:description" content="Building real‑world Generative AI systems, RAG architectures, and scalable ML APIs." />
+  <meta property="og:type" content="website" />
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(to bottom, #1a1a1a, #2a2a2a);
-      color: #b266ff;
-      overflow-x: hidden;
+    /* BACKGROUND FLOATING SHAPES */
+    .bg-shapes span{
+      position:fixed;
+      display:block;
+      width:120px;
+      height:120px;
+      background:linear-gradient(135deg,var(--accent),transparent);
+      opacity:0.08;
+      border-radius:50%;
+      animation:floatBG 20s linear infinite;
+      z-index:-1;
+    }
+    .bg-shapes span:nth-child(1){top:10%;left:5%;animation-duration:25s;}
+    .bg-shapes span:nth-child(2){top:40%;left:80%;animation-duration:30s;}
+    .bg-shapes span:nth-child(3){top:70%;left:20%;animation-duration:22s;}
+    .bg-shapes span:nth-child(4){top:85%;left:60%;animation-duration:28s;}
+
+    @keyframes floatBG{
+      from{transform:translateY(0) rotate(0deg)}
+      to{transform:translateY(-120vh) rotate(360deg)}
     }
 
-    /* Navbar */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: #11111100;
-      padding: 12px 0;
-      text-align: center;
+    /* GITHUB GRAPH */
+    .github-graph{
+      margin:40px 0;
+      animation:fadeUp 1.2s ease;
     }
-    header nav a {
-      margin: 0 15px;
-      color: #b266ff;
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 15px;
-    }
-    header nav a:hover {
-      color: #8800ff;
+    .github-graph img{
+      width:100%;
+      border-radius:16px;
+      background:#0b0b14;
+      padding:12px;
+      box-shadow:0 0 30px rgba(155,92,255,0.3);
     }
 
-    /* Big Banner Text */
-    .text-banner {
-      text-align: center;
-      padding: 50px 20px;
-      background: linear-gradient(to right, #8800ff00, #ff00cc00);
-    }
-    .text-banner h1 {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 48px;
-      color: #b266ff;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      animation: glow 2s ease-in-out infinite alternate;
-    }
-    @keyframes glow {
-      0% { text-shadow: 0 0 10px #b266ff, 0 0 20px #ff00cc, 0 0 30px #8800ff; }
-      100% { text-shadow: 0 0 20px #b266ff, 0 0 40px #ff00cc, 0 0 60px #8800ff; }
-    }
-      /* Floating Logos */
-    .floating-logo {
-      position: fixed;
-      top: -50px;
-      font-size: 50px;
-      opacity: 0.15;
-      animation: float 50s linear infinite;
-      z-index: 0;
-    }
-    @keyframes float {
-      from { transform: translateY(0) rotate(0deg); }
-      to   { transform: translateY(120vh) rotate(360deg); }
-    }
-    /* Sections */
-    section {
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-    h2, h3 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #b266ff;
+    :root{
+      --bg-dark:#0b0b14;
+      --bg-card:#141428;
+      --accent:#9b5cff;
+      --accent-soft:#bfa2ff;
+      --text-main:#e6e6ff;
+      --text-muted:#b3b3d9;
     }
 
-    /* Hero */
-    .hero {
-      text-align: center;
-      padding: 80px 20px;
-    }
-    .hero h1 {
-      font-size: 42px;
-      font-weight: 700;
-      color: #8800ff;
-      margin-bottom: 15px;
-    }
-    .hero .tagline {
-      font-size: 18px;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: 0 auto 25px;
-      color: #ddd;
+    *{box-sizing:border-box;scroll-behavior:smooth;}
+
+    body{
+      margin:0;
+      font-family:'Montserrat',sans-serif;
+      background:radial-gradient(circle at top,var(--bg-card),var(--bg-dark));
+      color:var(--text-main);
     }
 
-    /* Stats */
-    .stats {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin: 30px 0;
+    /* NAVBAR */
+    header{
+      position:fixed;
+      top:0;left:0;width:100%;
+      backdrop-filter:blur(10px);
+      background:rgba(11,11,20,0.6);
+      z-index:100;
     }
-    .stats div {
-      text-align: center;
-      font-size: 16px;
-      color: #fff;
+    nav{
+      display:flex;
+      justify-content:center;
+      gap:30px;
+      padding:18px;
     }
-    .stats span {
-      font-size: 28px;
-      font-weight: bold;
-      color: #8800ff;
+    nav a{
+      color:var(--accent-soft);
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s;
+    }
+    nav a:hover{color:var(--accent);}
+
+    /* SECTIONS */
+    section{
+      min-height:auto;
+      padding:100px 12% 60px;
     }
 
-    /* Buttons */
-    .btn {
-      display: inline-block;
-      padding: 10px 22px;
-      margin: 8px;
-      border-radius: 30px;
-      background: #8800ff;
-      color: #fff;
-      font-size: 14px;
-      font-weight: 600;
-      transition: 0.3s;
-      text-decoration: none;
+    h1,h2,h3{color:var(--accent);}
+    h2{font-size:1.8rem;margin-bottom:16px;text-align:left;}
+
+    /* HERO */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr;
+      align-items:flex-start;
+      gap:25px;
     }
-    .btn:hover {
-      background: #3a1d58;
+    .hero h1{font-size:2.6rem;text-align:left;}
+    .hero span{color:var(--accent-soft);}
+    .hero p{color:var(--text-muted);line-height:1.7;text-align:left;}
+
+    .hero-card{
+      background:var(--bg-card);
+      padding:28px 32px;
+      border-radius:22px;
+      box-shadow:0 12px 35px rgba(0,0,0,0.28);
+      color:var(--text-main);
+    }
+    .hero-card li{color:var(--text-muted);margin-left:18px;list-style:disc;}
+    @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+
+    /* ABOUT */
+    .about{
+      max-width:100%;
+      background:var(--bg-card);
+      padding:26px 30px;
+      border-radius:22px;
+      line-height:1.75;
+      color:var(--text-muted);
+      box-shadow:0 12px 35px rgba(0,0,0,0.28);
     }
 
-/* Section spacing */
-section {
-  padding: 40px 20px;
-  max-width: 1100px;
-  margin: auto;
-}
-
-/* Row for About Me, Projects, Skills */
-#about-projects-skills {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
-  gap: 30px;
-  max-width: 1100px;
-  margin: auto;
-  padding: 40px 20px;
-}
-
-/* 3D Card (common style for all) */
-.card-3d {
-  width: 100%;              /* fills grid column */
-  height: 300px;
-  perspective: 800px;
-  cursor: pointer;
-}
-.card-inner {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.8s ease;
-}
-.card-front,
-.card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #8800ff00, #ff00cc00);
-  color: #fff;
-  border-radius: 20px;
-  backface-visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 18px;
-  text-align: center;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-  overflow-y: auto;
-  font-size: 13px;
-  line-height: 1.4;
-}
-.card-back { transform: rotateY(180deg); }
-.card-3d.expanded .card-inner { transform: rotateY(180deg); }
-
-
-
-    /* Grid for cards */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-      gap: 20px;
-    }
-    .collapsible-card, .card {
-      background: #111;
-      border: 1px solid #b266ff;
-      border-radius: 12px;
-      padding: 15px;
-      transition: 0.3s;
-    }
-    .collapsible-card:hover, .card:hover {
-      background: #1f1f1f;
-    }
-    .card-header {
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .card-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-      font-size: 14px;
-      margin-top: 10px;
+    /* GRID */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:24px;
     }
 
-    /* Contact */
-    #contact .card {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14px;
+    .card{
+      background:var(--bg-card);
+      padding:26px 30px;
+      border-radius:22px;
+      transition:0.3s ease;
+      box-shadow:0 12px 35px rgba(0,0,0,0.28);
     }
-    #contact .card a { color: #b266ff; text-decoration: none; }
+    .card:hover{transform:translateY(-6px);}
+    .card:hover{transform:translateY(-4px);}
+    
 
-    /* Social icons fixed */
-    .social-fixed {
-      position: fixed;
-      top: 50%;
-      right: 10px;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      z-index: 999;
+    .card h3{margin-top:0;}
+    .card p{color:var(--text-muted);font-size:0.95rem;}
+
+    /* SKILLS */
+    .skill{
+      margin-bottom:15px;
     }
-    .social-fixed a {
-      background: #1f1f1f;
-      color: #b266ff;
-      font-size: 22px;
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.3s;
+    .bar{
+      height:8px;
+      background:#222;
+      border-radius:10px;
+      overflow:hidden;
     }
-    .social-fixed a:hover {
-      background: #8800ff;
-      color: #fff;
+    .bar span{
+      display:block;
+      height:100%;
+      background:linear-gradient(90deg,var(--accent),var(--accent-soft));
     }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 12px;
-      background: #000;
-      margin-top: 40px;
+    /* FOOTER */
+    footer{
+      text-align:left;
+      padding:40px 12%;
+      background:none;
+      color:var(--text-muted);
     }
-  </style>
+
+    footer a{color:var(--accent-soft);margin:0 10px;}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      h1{font-size:2.4rem;}
+    }
+      /* FLOATING TECH ICONS */
+    .floating-icons{
+      position:fixed;
+      left:20px;
+      top:50%;
+      transform:translateY(-50%);
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      z-index:90;
+      animation:parallax 12s ease-in-out infinite;
+    }
+    @keyframes parallax{
+      0%,100%{transform:translateY(-50%) translateX(0)}
+      50%{transform:translateY(-48%) translateX(6px)}
+    }
+    .tooltip{
+      position:absolute;
+      left:60px;
+      background:#000;
+      color:#fff;
+      padding:6px 10px;
+      border-radius:6px;
+      font-size:0.75rem;
+      opacity:0;
+      pointer-events:none;
+      transition:0.3s;
+      white-space:nowrap;
+    }
+    .floating-icons div{position:relative}
+    .floating-icons div:hover .tooltip{opacity:1;}
+    .floating-icons i{
+      font-size:22px;
+      color:var(--accent-soft);
+      background:var(--bg-card);
+      padding:14px;
+      border-radius:50%;
+      cursor:pointer;
+      box-shadow:0 0 20px rgba(155,92,255,0.25);
+      transition:0.4s;
+    }
+    .floating-icons i:hover{
+      transform:scale(1.2) rotate(8deg);
+      color:var(--accent);
+      box-shadow:0 0 35px rgba(155,92,255,0.6);
+    }
+
+    /* FLOATING SOCIAL BAR */
+    .social-bar{
+      position:fixed;
+      right:20px;
+      top:50%;
+      transform:translateY(-50%);
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      z-index:90;
+    }
+    .social-bar a{
+      font-size:20px;
+      color:#fff;
+      background:linear-gradient(135deg,var(--accent),var(--accent-soft));
+      padding:14px;
+      border-radius:50%;
+      text-align:center;
+      transition:0.4s;
+      box-shadow:0 0 25px rgba(155,92,255,0.4);
+    }
+    .social-bar a:hover{
+      transform:translateX(-6px) scale(1.15);
+      box-shadow:0 0 40px rgba(155,92,255,0.7);
+    }
+
+    .genai-badge{
+      position:fixed;
+      bottom:30px;
+      right:30px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-soft));
+      color:#000;
+      padding:12px 18px;
+      border-radius:30px;
+      font-weight:700;
+      animation:pulse 2.5s infinite;
+      box-shadow:0 0 30px rgba(155,92,255,0.6);
+      z-index:95;
+    }
+    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
+
+    @media(max-width:768px){
+      .floating-icons,.social-bar{display:none;}
+    }
+    /* DARK / LIGHT TOGGLE */
+    body.light{
+      --bg-dark:#f6f7fb;
+      --bg-card:#ffffff;
+      --accent:#6a3cff;
+      --accent-soft:#8f6bff;
+      --text-main:#0e0e1a;
+      --text-muted:#33354d;
+    }
+
+    #themeToggle{
+      background:var(--bg-card);
+      border:none;
+      color:var(--accent);
+      font-size:18px;
+      cursor:pointer;
+      border-radius:50%;
+      padding:10px;
+      box-shadow:0 0 15px rgba(0,0,0,0.2);
+    }
+
+    /* THINKING SECTION */
+    .thinking{
+      max-width:100%;
+      background:var(--bg-card);
+      padding:26px 30px;
+      border-radius:22px;
+      color:var(--text-main);
+      line-height:1.75;
+      box-shadow:0 12px 35px rgba(0,0,0,0.28);
+    }
+    @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+    /* ACHIEVEMENTS */
+    .badge{
+      display:flex;
+      align-items:center;
+      gap:15px;
+      animation:fadeUp 1.2s ease;
+    }
+    .badge img{
+      width:72px;
+      height:72px;
+      border-radius:14px;
+      background:#ffffff;
+      padding:10px;
+      object-fit:contain;
+      box-shadow:0 4px 12px rgba(0,0,0,0.25);
+      flex-shrink:0;
+    }
+
+        /* RAG DIAGRAM */
+    .rag-diagram{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      align-items:center;
+      gap:14px;
+      text-align:center;
+    }
+    .rag-step{
+      padding:14px 18px;
+      background:linear-gradient(135deg,var(--bg-card),#1b1b3a);
+      border-radius:14px;
+      font-weight:600;
+      animation:pulseRAG 3s infinite;
+      box-shadow:0 0 20px rgba(155,92,255,0.3);
+    }
+    .rag-arrow{font-size:22px;color:var(--accent);}
+    @keyframes pulseRAG{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+
+    /* MOBILE MOTION TUNING */
+    @media(max-width:768px){
+      .hero-card{animation:none}
+      .rag-step{animation:none}
+      .reveal{transition:0.6s ease}
+    }
+
+    /* PERFORMANCE: REDUCE MOTION */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important;transition:none !important}
+    }
+</style>
 </head>
 <body>
-
-  <!-- Text Banner -->
-  <div class="text-banner">
-    <h1>WELCOME TO MY PORTFOLIO</h1>
-  </div>
-
-  <!-- Floating Logos -->
-  <i class="fab fa-python floating-logo" style="left:10%; animation-delay:0s;"></i>
-  <i class="fab fa-html5 floating-logo" style="left:25%; animation-delay:5s;"></i>
-  <i class="fab fa-css3-alt floating-logo" style="left:40%; animation-delay:10s;"></i>
-  <i class="fab fa-js floating-logo" style="left:55%; animation-delay:15s;"></i>
-  <i class="fab fa-github floating-logo" style="left:70%; animation-delay:20s;"></i>
-  <i class="fab fa-linkedin floating-logo" style="left:85%; animation-delay:12s;"></i>
-  <i class="fas fa-envelope floating-logo" style="left:15%; animation-delay:7s;"></i>
-  <i class="fas fa-phone floating-logo" style="left:60%; animation-delay:17s;"></i>
+<div class="bg-shapes">
+  <span></span><span></span><span></span><span></span>
+</div>
+<audio id="clickSound"><source src="data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEAQB8AAIA+AAACABAAZGF0YQAAAAA=" type="audio/wav"></audio>
 
 
-  <!-- Navbar -->
-  <header>
-    <nav>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-      <a href="#achievements">Achievements</a>
-      <a href="#contact">Contact</a>
-      <a href="https://drive.google.com/uc?export=download&id=1m5ZV7BuZxdrsiAVpdp7kAyjkEJbH_BDw">Resume</a>
-    </nav>
-  </header>
 
-<!-- About Me -->
-<div class="card-3d">
-  <div class="card-inner">
-    <div class="card-front"><h2>About Me</h2></div>
-    <div class="card-back">
-      <h2>Deepa ananthan AR</h2>
-      <p>
-        I am an enthusiastic <b>B.Tech Artificial Intelligence & Data Science</b> student (2022-2026)  
-        at Nehru Institute of Engineering and Technology, Coimbatore.  
-        <br><br>
-        🌟 My interests span across <b>Machine Learning, Deep Learning, Computer Vision,  
-        Natural Language Processing, Internet of Things (IoT), and Cloud Computing</b>.  
-        <br><br>
-        🔬 I have completed <b>12+ projects</b>, including real-time object detection, AI-powered  
-        career guidance, waste classification, and smart water monitoring.  
-        <br><br>
-        📚 Beyond academics, I actively participate in <b>hackathons, internships, and research</b>  
-        to stay updated with the latest AI trends and technologies.  
-        <br><br>
-        🏆 Achievements: Selected for <b>NTRO AI/ML Government Internship</b>,  
-        contributed to sustainability projects, and represented in hackathons.  
-        <br><br>
-        ⚡ Skills: Python, TensorFlow, Keras, OpenCV, YOLOv5, Tableau, Power BI,  
-        Splunk, AWS, IBM Cloud, API Development (Flask/FastAPI).
-      </p>
-    </div>
-  </div>
+<!-- LEFT FLOATING TECH STACK -->
+<!-- LEFT FLOATING TECH STACK -->
+<div class="floating-icons">
+  <div><i class="fa-brands fa-python"></i><span class="tooltip">Python – Core language for AI & ML</span></div>
+  <div><i class="fa-solid fa-rocket"></i><span class="tooltip">FastAPI – ML & LLM APIs</span></div>
+  <div><i class="fa-solid fa-code"></i><span class="tooltip">VS Code – Daily dev environment</span></div>
+  <div><i class="fa-solid fa-brain"></i><span class="tooltip">AI Tools – NLP, CV, Analytics</span></div>
+  <div><i class="fa-solid fa-robot"></i><span class="tooltip">GPT – Prompting & RAG logic</span></div>
+  <div><i class="fa-solid fa-microchip"></i><span class="tooltip">Copilot / Gemini – Assisted coding</span></div>
+</div>
+
+<!-- RIGHT FLOATING SOCIAL BAR -->
+<div class="social-bar">
+  <a href="https://github.com/Deepaananthan2004" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+  <a href="https://www.linkedin.com" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+  <a href="https://wa.me/918610378936" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+  <a href="mailto:deepaananthanar@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
 </div>
 
 
-  <!-- Social Icons -->
-  <div class="social-fixed">
-    <a href="https://www.linkedin.com/in/deepa-ananthan-ar" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/Deepaananthan2004" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="mailto:deepaananthanar@gmail.com"><i class="fas fa-envelope"></i></a>
-    <a href="https://www.instagram.com/myself_ananthan__" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://wa.me/918610378936" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<header>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#thinking">Thinking</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+    <button id="themeToggle" title="Toggle theme">🌙</button>
+  </nav>
+</header>
+
+<section class="reveal" id="home" class="hero">
+  <div>
+    <h1>Hi, I'm <span>Deepa Ananthan AR</span></h1>
+    <p>Final-year B.Tech student in <b>AI & Data Science</b> and an aspiring AI Engineer who builds scalable, real‑world Generative AI systems. I work with LLMs, RAG architectures, and cloud‑deployed ML solutions.</p>
   </div>
+  <div class="hero-card card">
+    <p><b>Role Focus</b></p>
+    <ul>
+      <li>Python‑based AI & ML Development</li>
+      <li>Generative AI, LLMs & RAG Systems</li>
+      <li>FastAPI / Flask for Scalable AI APIs</li>
+      <li>Cloud‑deployed ML Solutions (AWS, IBM Watson)</li>
+    </ul>
+  </div>
+</section>
 
-  <!-- Hero -->
-  <section class="hero" id="hero">
-    <h1>Deepa ananthan AR</h1>
-    <p class="tagline">AI & Data Science student with experience in ML, analytics, and real-world applications.<br>
-    Skilled in Python, ML libraries, and cloud tools. Fast learner, team player, and problem solver.</p>
+<section class="reveal" id="about">
+  <h2>About Me</h2>
+  <div class="about card">
+    I’m a driven software engineer and AI enthusiast who enjoys turning abstract ideas into working intelligent systems.
+    My journey started with data analytics and evolved into building end‑to‑end AI products using Python, LLMs, and cloud platforms.
+    <br><br>
+    I believe AI should be <b>practical, explainable, and impactful</b>. I focus on building systems that solve real problems — not just demos.
+  </div>
+</section>
 
-    <div class="stats">
-      <div><span class="count" data-target="12">0</span><br>Projects</div>
-      <div><span class="count" data-target="10">0</span><br>Virtual Internships</div>
-      <div><span class="count" data-target="9">0</span><br>Certifications</div>
-    </div>
+<section class="reveal" id="thinking">
+  <h2>How I Think as an AI Engineer</h2>
+  <div class="thinking card">
+    <b>1. Problem First:</b> I start by understanding the business or user problem before touching models.<br><br>
+    <b>2. Simple → Scalable:</b> I prototype fast, then design for scalability using APIs and cloud services.<br><br>
+    <b>3. Data + Context:</b> I use RAG and NLP to ensure AI responses are grounded in real data.<br><br>
+    <b>4. Measure Everything:</b> Accuracy, latency, cost — every decision is measurable.<br><br>
+    <b>5. Production Mindset:</b> Code should deploy, scale, and survive real users.
+  </div>
+</section>
 
-    <div>
-      <a href="#contact" class="btn">Hire Me</a>
-      <a href="https://drive.google.com/uc?export=download&id=1m5ZV7BuZxdrsiAVpdp7kAyjkEJbH_BDw" class="btn">Download Resume</a>
-    </div>
-  </section>
-
-  <!-- Projects -->
-<section id="projects">
-  <h3>Projects</h3>
+<section class="reveal" id="top-skills">
+  <h2>Top Skills</h2>
   <div class="grid">
-    <div class="collapsible-card">
-      <div class="card-header">Dream Canvas+ (Jul 2025 · 1 mo) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        AI-powered story generator that creates visual stories from text prompts. <br>
-        <em>Python, OpenCV, Gemini Pro, TTS, Streamlit, MoviePy</em>
-      </div>
-    </div>
+    <div class="card badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" /> Python (Programming Language)</div>
+    <div class="card badge"><img src="https://img.icons8.com/color/96/artificial-intelligence.png" alt="AI" /> Artificial Intelligence (AI)</div>
+    <div class="card badge"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="Machine Learning" /> Machine Learning</div>
+    <div class="card badge"><img src="https://img.icons8.com/fluency/96/artificial-intelligence.png" alt="Generative AI" /> Generative AI</div>
+    <div class="card badge"><img src="https://img.icons8.com/color/96/chatgpt.png" alt="LLM" /> Large Language Models (LLMs)</div>
+  </div>
+</section>
 
-    <div class="collapsible-card">
-      <div class="card-header">Object Detection - Real Time (Jun 2025 · 1 mo) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        Real-time vehicle detection using YOLOv5. Capable of detecting multiple objects with bounding boxes. <br>
-        <em>Python, OpenCV, YOLOv5</em>
-      </div>
-    </div>
+<section class="reveal" id="experience">
+  <h2>Experience</h2>
+  <div class="card">
+    <h3>AI & Cloud Engineering Intern — Edunet Foundation (IBM)</h3>
+    <p><b>Duration:</b> Jul 2025 – Aug 2025 (Remote)</p>
+    <ul style="color:var(--text-muted); margin-left:18px;">
+      <li>Engineered and maintained cloud-based AI workflows using <b>IBM Watson</b>.</li>
+      <li>Reduced AI inference latency by <b>20%</b> through workflow optimization.</li>
+      <li>Integrated APIs to enable secure data exchange between AI models and frontend systems.</li>
+      <li>Deployed scalable AI solutions following secure coding and production-ready architecture principles.</li>
+    </ul>
+  </div>
+</section>
 
-    <div class="collapsible-card">
-      <div class="card-header">Spot the Silent Threat (May-Jun 2025 · 2 mos) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        Insider threat detection system using behavioral drift analytics. <br>
-        <a href="https://splunk-build-hack-pwsgf4vbgfnni8gctqbyen.streamlit.app/" target="_blank">Live Demo</a> | 
-        <a href="https://github.com/Deepaananthan2004/splunk-Build-Hack.git" target="_blank">GitHub</a>
-      </div>
+<section class="reveal" id="learning">
+  <h2>Learning & Skill Growth Visualization</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Learning Progress Over Time</h3>
+      <canvas id="learningLine" height="180"></canvas>
     </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">AI Career Adviser (May 2025 · 1 mo) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        Generative AI-based career guidance platform. Provides personalized recommendations for AI/ML careers. <br>
-        <em>Python, Generative AI, NLP</em>
-      </div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">AI-Based Product Review Summarizer (May 2025 · 1 mo) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        Summarizes product reviews from e-commerce websites using NLP techniques. <br>
-        <em>Python, Generative AI</em>
-      </div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Customer Churn Analysis (Dec 2024 - Jan 2025 · 2 mos) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        Predicts customer churn for subscription services using machine learning models. <br>
-        <em>Python, Data Analytics, ML</em>
-      </div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Waste Classification using CNN (Jan 2025 · 1 mo) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        Classifies waste types using Convolutional Neural Networks. <br>
-        <em>Python, CNN, TensorFlow, OpenCV</em>
-      </div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Smart Sensor-Enhanced Public Safety Network (Oct-Dec 2024 · 3 mos) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        IoT-enabled public safety network integrating sensors and AI for real-time threat detection. <br>
-        <em>IoT, AI/ML, Cybersecurity</em>
-      </div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Smart Water Quality Monitoring (Aug-Sep 2024 · 2 mos) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        Monitors water quality parameters using IoT sensors with live visualization. <br>
-        <em>IoT, Sensors, Data Visualization</em>
-      </div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Pixel Manipulation for Image Encryption (Jun 2024 · 1 mo) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        Encrypts images by manipulating pixel values to secure visual data. <br>
-        <em>Python</em>
-      </div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Responsive Landing Page (Jun 2024 · 1 mo) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        Created a fully responsive landing page with modern UI/UX design principles. <br>
-        <em>HTML, CSS, JavaScript</em>
-      </div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Big Sales Prediction (Apr-May 2024 · 2 mos) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        Predicts big sales trends using historical data and Random Forest Regression. <br>
-        <em>Python, Pandas, ML</em>
-      </div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Handwritten Digit Recognition (Apr-May 2024 · 2 mos) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        Digit classification using standard datasets with ML models. <br>
-        <em>Python, Datasets, Colab</em>
-      </div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Face Reaction Model (May 2024 · 1 mo) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        Recognizes and classifies facial expressions to monitor user reactions. <br>
-        <em>Python, Colab</em>
-      </div>
+    <div class="card">
+      <h3>Skill Focus Distribution</h3>
+      <canvas id="learningBar" height="180"></canvas>
     </div>
   </div>
 </section>
 
-
-  <!-- Internships -->
-<section id="experience">
-  <h3>Internships & Experience</h3>
+<section class="reveal" id="projects">
+  <h2>Key Projects</h2>
   <div class="grid">
-    <div class="collapsible-card">
-      <div class="card-header">1M1B — Green Intern (Aug 2025 - Present · Remote) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">Worked on AI projects and sustainability analytics. Developed Green AI models and contributed to environmental impact dashboards.</div>
+    <div class="card">
+      <h3>AI Career Adviser (Generative AI & RAG)</h3>
+      <p>Built a GenAI-based system that analyzes resumes, extracts skills using NLP & NER, and provides personalized career guidance using LLMs integrated with RAG for real-time job data.</p>
+      <p><b>Tech:</b> Python, NLP, LLMs, RAG, FastAPI</p>
     </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">IBM SkillsBuild — AI/ML Intern (Jul 2025 · Remote) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">Promoted AI safety practices, trained students on ML algorithms, and developed ML model evaluation frameworks.</div>
+    <div class="card">
+      <h3>Customer Churn Prediction</h3>
+      <p>Developed machine learning models to predict customer churn with <b>82% accuracy</b>, helping businesses identify high-risk customers and improve retention strategies.</p>
+      <p><b>Tech:</b> Python, Scikit-learn, Pandas</p>
     </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Edunet Foundation — IBM Cloud & AI Internship (Jul 2024 · Remote) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">Implemented cloud-based AI solutions and learned deployment of AI models on IBM Cloud.</div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">HunarIntern — Data Science Intern (Aug 2024 · Remote) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">Performed data analysis, visualization, and preprocessing for real-world datasets using Python and Tableau.</div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Prodigy InfoTech — Data Science Intern (Aug 2024 · Remote) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">Developed predictive models and performed data cleaning and feature engineering for client projects.</div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">AWS — AI-ML Intern (Jan-Mar 2024 · Remote) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">Built and trained ML models, experimented with different AI architectures, and deployed solutions in cloud environments.</div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Pantech.AI — AI Intern (Apr-Jun 2024 · Remote) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">Developed AI and deep learning models for real-time projects, including object detection and classification tasks.</div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">PRASUNET — DS Intern (Jun-Jul 2024 · Remote) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">Analyzed datasets, visualized results, and created dashboards to support business decisions.</div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Pantech.AI — ML Intern (Dec 2024 · Remote) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">Worked on ML projects, implemented algorithms, and performed model evaluation and optimization.</div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Codec Tech — Data Analyst Intern (Dec 2024 - Feb 2025 · Hybrid) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">Performed data analytics tasks, created visualizations, and supported decision-making with data insights.</div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Edunet — Shell Skills4Future AI-GreenSkills Internship (Jan-Feb 2025 · Remote) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">Focused on Green Skills using AI technologies, including energy optimization and environmental data analysis.</div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Google Developers — Android Developer Intern (Sep-Nov 2023 · Remote) <span class="toggle-icon">▼</span></div>
-      <div class="card-content">Developed Android applications and implemented interactive features for user experience enhancement.</div>
+    <div class="card">
+      <h3>Real-Time Vehicle Detection</h3>
+      <p>Designed a computer vision system using YOLOv5 to detect vehicles in real time, track speed and distance, and optimize inference performance.</p>
+      <p><b>Tech:</b> PyTorch, OpenCV, YOLOv5</p>
     </div>
   </div>
 </section>
 
+<section class="reveal" id="achievements">
+  <h2>Achievements & Certifications</h2>
 
-  <!-- Skills -->
-  <!-- Skills -->
-<section id="skills">
-  <h3>Skills</h3>
+  <h3>Achievements</h3>
   <div class="grid">
-    <div class="collapsible-card">
-      <div class="card-header">Python <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        Data Science<br>
-        ML<br>
-        AI Development<br>
-        Data Analysis<br>
-        Data Visualization<br>
-        Pandas<br>
-        Seaborn<br>
-        Colab
-      </div>
+    <div class="card">
+      <h4>🏆 Winner – Splunk Hackathon</h4>
+      <p>Awarded <b>₹17,000</b> prize for rapid prototyping, teamwork, and delivering a working solution under time constraints.</p>
     </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Machine Learning & Deep Learning <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        Supervised Learning<br>
-        Unsupervised Learning<br>
-        Regression<br>
-        Classification<br>
-        CNN<br>
-        RNN<br>
-        YOLOv5<br>
-        TensorFlow<br>
-        Keras
-      </div>
+    <div class="card">
+      <h4>🏅 Top 49 – Naukri Campus Young Turks 2025</h4>
+      <p>Recognized nationally for strong <b>analytical thinking</b> and <b>engineering potential</b>.</p>
     </div>
+  </div>
 
-    <div class="collapsible-card">
-      <div class="card-header">AI & Generative AI <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        AI Safety<br>
-        Responsible AI<br>
-        Generative AI Studio<br>
-        NLP<br>
-        AI Career Adviser<br>
-        Predictive Modeling
-      </div>
+  <h3 style="margin-top:30px">Certifications</h3>
+  <div class="grid">
+    <div class="card badge">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg" alt="Azure" />
+      <p><b>Microsoft Azure AI Fundamentals</b></p>
     </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Data Analytics & Visualization <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        Tableau<br>
-        Power BI<br>
-        Spreadsheets<br>
-        Data Modeling<br>
-        Feature Engineering<br>
-        Churn Analysis<br>
-        Big Sales Prediction
-      </div>
+    <div class="card badge">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS" />
+      <p><b>AWS Academy – Machine Learning Foundations</b></p>
     </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Cloud & Big Data <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        IBM Cloud<br>
-        AWS<br>
-        Data Engineering<br>
-        Big Data Analytics<br>
-        Cloud Foundation
-      </div>
+    <div class="card badge">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" />
+      <p><b>IBM AI with Python</b></p>
     </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Computer Vision & Image Processing <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        OpenCV<br>
-        Image Processing<br>
-        YOLOv5<br>
-        CNN<br>
-        Face Reaction Model<br>
-        Waste Classification
-      </div>
+    <div class="card badge">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Cisco_logo.svg" alt="Cisco" />
+      <p><b>Python Essentials 1 – Cisco</b></p>
     </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">IoT & Embedded Systems <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        IoT<br>
-        Embedded Systems<br>
-        Sensors<br>
-        Smart Safety Network<br>
-        Drone Operation
-      </div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Web & Frontend <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        HTML<br>
-        CSS<br>
-        JavaScript<br>
-        Responsive UI/UX<br>
-        Website Design
-      </div>
-    </div>
-
-    <div class="collapsible-card">
-      <div class="card-header">Other Tools & Skills <span class="toggle-icon">▼</span></div>
-      <div class="card-content">
-        Splunk & MLTK<br>
-        API Development (Flask/FastAPI)<br>
-        Project Management<br>
-        Problem Solving<br>
-        Analytical Thinking<br>
-        Algorithmic Thinking
-      </div>
+    <div class="card badge">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Wipro_Primary_Logo_Color_RGB.svg" alt="Wipro" />
+      <p><b>Data Science – TalentNext (Wipro)</b></p>
     </div>
   </div>
 </section>
 
-  <!-- Education -->
-  <section id="education">
-    <h3>Education</h3>
-    <div class="grid">
-      <div class="collapsible-card"><div class="card-header">Degree <span class="toggle-icon">▼</span></div><div class="card-content">Nehru Institute of Engineering and Technology, Coimbatore (2022–2026)<br>CGPA: 7.5<br>B.Tech Artificial Intelligence & Data Science</div></div>
-      <div class="collapsible-card"><div class="card-header">Higher Secondary <span class="toggle-icon">▼</span></div><div class="card-content">The Leaders Matric School Karaikudi<br>Marks: 440<br>73.33%</div></div>
-      <div class="collapsible-card"><div class="card-header">Secondary School <span class="toggle-icon">▼</span></div><div class="card-content">The Leaders Matric School Karaikudi<br>Marks: 434<br>86%</div></div>
-    </div>
-  </section>
+<section class="reveal" id="contact">
+  <h2>Contact</h2>
+  <div class="card">
+    <a href="resume.pdf" download><i class="fa-solid fa-file"></i> Download Resume (ATS‑Friendly)</a><br><br>
+    <p><i class="fa-solid fa-envelope"></i> deepaananthanar@gmail.com</p>
+    <p><i class="fa-solid fa-phone"></i> +91‑8610378936</p>
+  </div>
+</section>
 
-  <!-- Achievements -->
-  <section id="achievements">
-    <h3>Achievements & Activities</h3>
-    <div class="grid">
-      <div class="collapsible-card"><div class="card-header">Government AI/ML Internship at NTRO <span class="toggle-icon">▼</span></div><div class="card-content">Selected for prestigious NTRO internship</div></div>
-      <div class="collapsible-card"><div class="card-header">Chess Player ♟️ <span class="toggle-icon">▼</span></div><div class="card-content">Played in district & state level tournaments</div></div>
-      <div class="collapsible-card"><div class="card-header">Football Team ⚽ <span class="toggle-icon">▼</span></div><div class="card-content">Part of college team, developed teamwork & leadership</div></div>
-      <div class="collapsible-card"><div class="card-header">Hackathon Enthusiast 💻 <span class="toggle-icon">▼</span></div><div class="card-content">Actively participated in AI/ML hackathons</div></div>
-    </div>
-  </section>
+<footer>
+  © 2026 Deepa Ananthan AR | Built with ❤️ & AI
+</footer>
 
-  <!-- Contact -->
-  <section id="contact">
-    <h3>Contact</h3>
-    <div class="grid">
-      <div class="card"><i class="fas fa-envelope"></i> <a href="mailto:deepaananthanar@gmail.com">deepaananthanar@gmail.com</a></div>
-      <div class="card"><i class="fas fa-phone"></i> <a href="tel:+918610378936">+91-8610378936</a></div>
-      <div class="card"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/deepa-ananthan-ar" target="_blank">linkedin.com/in/deepa-ananthan-ar</a></div>
-    </div>
-  </section>
+<script>
+  document.querySelectorAll('a, i').forEach(el=>{
+    el.addEventListener('click',()=>{
+      document.getElementById('clickSound').play();
+    });
+  });
+</script>
 
-  <footer>© 2025 Deepa ananthan AR</footer>
+<script>
+  const toggle=document.getElementById('themeToggle');
+  toggle.onclick=()=>{
+    document.body.classList.toggle('light');
+    toggle.textContent=document.body.classList.contains('light')?'🌞':'🌙';
+  };
 
-  <script>
-    // Collapsible toggle
-    document.querySelectorAll('.collapsible-card .card-header').forEach(header => {
-      header.addEventListener('click', () => {
-        const card = header.parentElement;
-        const content = card.querySelector('.card-content');
-        const icon = header.querySelector('.toggle-icon');
-        if (content.style.maxHeight) { content.style.maxHeight = null; if(icon) icon.textContent = "▼"; }
-        else { content.style.maxHeight = content.scrollHeight + "px"; if(icon) icon.textContent = "▲"; }
+  document.querySelectorAll('a, i, button').forEach(el=>{
+    el.addEventListener('click',()=>{
+      document.getElementById('clickSound').play();
+    });
+  });
+</script>
+<script>
+  /* SCROLL REVEAL ANIMATION */
+  const reveals=document.querySelectorAll('.reveal');
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add('active');}
+    });
+  },{threshold:0.15});
+  reveals.forEach(r=>observer.observe(r));
+</script>
+
+<script>
+  /* SIMPLE CANVAS CHART ANIMATION (NO LIBRARIES) */
+  const line = document.getElementById('learningLine');
+  const bar = document.getElementById('learningBar');
+
+  function drawLineChart(){
+    const ctx = line.getContext('2d');
+    const data = [20,35,50,65,75,85,95];
+    const years = ['2022','2023','2024','2025','2026'];
+    let step = 0;
+
+    const accent = getComputedStyle(document.body).getPropertyValue('--accent').trim();
+    const textColor = getComputedStyle(document.body).getPropertyValue('--text-muted').trim();
+
+    function animate(){
+      ctx.clearRect(0,0,line.width,line.height);
+
+      // axes
+      ctx.strokeStyle = textColor;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(30,20); ctx.lineTo(30,160); ctx.lineTo(320,160);
+      ctx.stroke();
+
+      // line
+      ctx.strokeStyle = accent;
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      data.slice(0,step).forEach((v,i)=>{
+        const x = 50 + i*40;
+        const y = 160 - v;
+        if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
       });
-    });
+      ctx.stroke();
 
-    // 3D card flip
-    const card3d = document.querySelector('.card-3d');
-    card3d.addEventListener('click', () => {
-      card3d.classList.toggle('expanded');
-    });
+      // points
+      ctx.fillStyle = accent;
+      data.slice(0,step).forEach((v,i)=>{
+        const x = 50 + i*40;
+        const y = 160 - v;
+        ctx.beginPath(); ctx.arc(x,y,4,0,Math.PI*2); ctx.fill();
+      });
 
-    // Stats counter
-    const counters = document.querySelectorAll('.count');
-    counters.forEach(counter => {
-      const updateCount = () => {
-        const target = +counter.getAttribute('data-target');
-        const count = +counter.innerText;
-        const inc = Math.ceil(target / 50);
-        if (count < target) {
-          counter.innerText = count + inc;
-          setTimeout(updateCount, 40);
-        } else {
-          counter.innerText = target + "+";
-        }
-      };
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            updateCount();
-            observer.unobserve(counter);
-          }
-        });
-      }, { threshold: 0.5 });
-      observer.observe(counter);
+      // year labels
+      ctx.fillStyle = textColor;
+      ctx.font = '12px Montserrat';
+      years.forEach((yr,i)=>{
+        const x = 50 + i*60;
+        ctx.fillText(yr, x-10, 175);
+      });
+
+      if(step < data.length){ step++; requestAnimationFrame(animate); }
+    }
+    animate();
+  }
+
+  function drawBarChart(){
+    const ctx = bar.getContext('2d');
+    const skills = [90,85,80,75,70];
+    const labels = ['Python','AI','ML','GenAI','LLMs (Learning)'];
+    let frame = 0;
+
+    const accent = getComputedStyle(document.body).getPropertyValue('--accent').trim();
+    const textColor = getComputedStyle(document.body).getPropertyValue('--text-muted').trim();
+
+    function animate(){
+      ctx.clearRect(0,0,bar.width,bar.height);
+
+      skills.forEach((v,i)=>{
+        // bar
+        ctx.fillStyle = accent;
+        ctx.fillRect(40+i*45,160,30,-Math.min(frame,v));
+
+        // value
+        ctx.fillStyle = textColor;
+        ctx.font = '11px Montserrat';
+        ctx.fillText(v+'%', 38+i*45, 160-Math.min(frame,v)-8);
+
+        // label
+        ctx.fillText(labels[i], 25+i*45, 175);
+      });
+
+      if(frame < 100){ frame+=2; requestAnimationFrame(animate); }
+    }
+    animate();
+  }
+
+  const chartObserver = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ drawLineChart(); drawBarChart(); chartObserver.disconnect(); }
     });
-  </script>
+  },{threshold:0.3});
+
+  chartObserver.observe(document.getElementById('learning'));
+</script>
+
+<style>
+  .reveal{opacity:0;transform:translateY(40px);transition:1s ease;}
+  .reveal.active{opacity:1;transform:translateY(0);}
+</style>
+
 </body>
-
 </html>
