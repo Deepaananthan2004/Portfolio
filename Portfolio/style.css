@@ -1,0 +1,448 @@
+/* --- 1. BLACK & WHITE COLOR THEME --- */
+:root {
+    --bg-dark: #000000; /* Pure black background */
+    --card-bg: rgba(20, 20, 20, 0.6); 
+    --card-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1aa;
+    --cyan: #ffffff; /* Changes highlights to white */
+    --purple: #444444; /* Changes secondary highlights to dark grey */
+    --spotlight: rgba(255, 255, 255, 0.05);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .logo { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.03em; }
+
+/* Subtle Greyscale Gradient Background */
+.mesh-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden; background: #000000; }
+.gradient-sphere { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.5; animation: float 20s infinite alternate ease-in-out; }
+.sphere-1 { width: 600px; height: 600px; background: rgba(255, 255, 255, 0.05); top: -10%; left: -10%; }
+.sphere-2 { width: 500px; height: 500px; background: rgba(255, 255, 255, 0.08); bottom: -10%; right: -5%; animation-delay: -10s; }
+@keyframes float { 0% { transform: translate(0, 0); } 100% { transform: translate(100px, 150px); } }
+
+/* Typography Utilities */
+.text-gradient { background: linear-gradient(to right, var(--cyan), var(--purple)); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.text-cyan { color: var(--cyan); }
+.text-purple { color: var(--purple); }
+.section-title { font-size: 2.5rem; margin-bottom: 2.5rem; }
+
+/* --- CINEMATIC B&W HERO SECTION --- */
+.hero { 
+    position: relative; 
+    min-height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; /* Centers everything horizontally */
+    overflow: hidden; /* Keeps the giant image contained */
+    padding-top: 80px; 
+}
+
+.hero-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the text */
+    text-align: center;
+    z-index: 10; /* Keeps text ON TOP of the image */
+}
+
+.hero-text {
+    position: relative;
+    z-index: 10;
+    max-width: 900px;
+    margin-top: 5vh; /* Adjust this to move text up or down over your chest */
+}
+
+/* The small "Deepa Ananthan AR" text at the top */
+.hero h1 { 
+    font-size: 1.5rem; 
+    color: var(--cyan); /* Makes it a cool accent color */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem; 
+    font-weight: 600;
+}
+
+/* The MASSIVE "GenAI Developer" text */
+.hero-role { 
+    font-size: 7.5rem; /* Massive size like the reference image */
+    line-height: 1; 
+    margin-bottom: 1.5rem; 
+    font-weight: 800; 
+    letter-spacing: -2px;
+    color: #ffffff; /* Forces it to be pure white */
+    text-transform: uppercase;
+}
+
+/* Overrides the gradient so it matches the pure white reference */
+.hero-role .text-gradient {
+    background: none;
+    -webkit-text-fill-color: #ffffff;
+}
+
+.hero-subtitle { 
+    font-size: 1.1rem; 
+    color: var(--text-secondary); 
+    max-width: 600px; 
+    margin: 0 auto 3rem auto; /* Centers the paragraph */
+    font-weight: 400; 
+    line-height: 1.8; 
+}
+
+.hero-cta { 
+    display: flex; 
+    justify-content: center; /* Centers the buttons */
+    gap: 1.5rem; 
+}
+
+/* --- THE BACKGROUND PORTRAIT --- */
+.hero-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Centers the image perfectly */
+    align-items: flex-end; /* Anchors the image to the bottom of the screen */
+    z-index: 1; /* Puts the image BEHIND the text */
+    pointer-events: none; /* Stops the image from blocking button clicks */
+}
+
+.hero-img {
+    height: 90vh; /* Makes the portrait huge */
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%) contrast(1.2) brightness(0.6); /* Creates the dark Black & White moody effect */
+    /* This creates the smooth fade into black at the bottom of your photo! */
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 25%);
+    mask-image: linear-gradient(to top, transparent 0%, black 25%);
+}
+
+/* Mobile Adjustments so the massive text doesn't break small screens */
+@media (max-width: 1024px) {
+    .hero-role { font-size: 5rem; }
+    .hero-img { height: 75vh; }
+}
+
+@media (max-width: 600px) {
+    .hero-role { font-size: 3.5rem; }
+    .hero-img { height: 60vh; opacity: 0.4; } /* Fades image more on mobile so text is readable */
+    .hero-cta { flex-direction: column; }
+}
+
+/* --- UPDATED ABOUT LAYOUT STYLES --- */
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-image-container {
+    flex: 1;
+    position: relative;
+    min-height: 450px; /* Gives the image a nice vertical ID card shape */
+    background: var(--card-bg); /* Perfectly matches the other cards */
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    overflow: hidden; /* This is the secret: it cuts your image to fit the rounded card! */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style for the second image to make it cinematic */
+.about-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Forces the image to fill the card perfectly without stretching */
+    filter: grayscale(100%) contrast(1.2);
+    opacity: 0.75; /* Dims the image slightly so it doesn't glare against the black background */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Premium Hover Effect: Zooms in and brightens when mouse is over it */
+.about-image-container:hover .about-img {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* The Shadow Fade: Adds a dark gradient over the bottom of the photo to blend it */
+.about-image-container::after {
+    content: "";
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, var(--bg-dark) 100%);
+    pointer-events: none;
+}
+
+/* We completely remove the harsh shape-bg to clean up the look */
+.shape-bg {
+    display: none; 
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 900px) {
+    .hero-container, .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-image-container {
+        justify-content: center;
+        margin-top: 2rem;
+    }
+
+    .hero-cta {
+        justify-content: center;
+    }
+}
+
+/* --- NEW CENTERED FLOATING NAVBAR --- */
+.navbar {
+    position: fixed;
+    top: 25px; /* Floats slightly down from the very top */
+    left: 50%;
+    transform: translateX(-50%); /* Centers it perfectly */
+    background: rgba(10, 10, 15, 0.6); /* Premium dark glass */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px; /* Modern pill shape */
+    padding: 0.6rem 2rem;
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+    /* The "Pop Up" Load Animation */
+    animation: navPop 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    margin-top: -20px; /* Starts slightly higher */
+}
+
+/* Keyframes for the pop-up effect */
+@keyframes navPop {
+    to {
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+/* Clean text for regular links */
+.nav-links a {
+    color: #f8fafc;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: 0.3s ease;
+    padding: 0.5rem;
+}
+
+.nav-links a:hover {
+    color: #00f0ff; /* Cyan glow on hover */
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+
+/* Distinct look for the Resume button to match the pill */
+.nav-links a.resume-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-links a.resume-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #00f0ff;
+}
+/* Buttons & Pills */
+.glass-btn { background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); color: #fff; backdrop-filter: blur(10px); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; }
+.glass-btn:hover { background: rgba(255,255,255,0.1); border-color: var(--cyan); box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); transform: translateY(-2px); }
+.primary-btn { background: linear-gradient(45deg, var(--cyan), var(--purple)); color: #fff; border: none; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; transition: 0.3s; font-weight: 600; }
+.primary-btn:hover { box-shadow: 0 0 20px rgba(138, 43, 226, 0.4); transform: translateY(-2px); filter: brightness(1.1); }
+.btn-sm { padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.9rem; }
+.large-btn { padding: 1rem 2rem; border-radius: 12px; font-size: 1rem; }
+
+.glass-pill { background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; color: var(--text-secondary); text-decoration: none;}
+/* Stacks the pills vertically like a list */
+.pill-group.vertical {
+    flex-direction: column;
+    align-items: flex-start; /* Keeps them aligned to the left edge */
+    gap: 12px; /* Adds nice spacing between each item */
+}
+.pill { background: rgba(255,255,255,0.08); padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; color: #cbd5e1; border: 1px solid rgba(255,255,255,0.1); }
+.pill.outline { background: transparent; border: 1px solid var(--card-border); }
+.border-cyan { border-color: rgba(0, 240, 255, 0.5); color: var(--cyan); }
+
+/* Sections */
+section { max-width: 1100px; margin: 0 auto; padding: 8rem 2rem 4rem; position: relative; z-index: 2; }
+
+/* Hero */
+.hero { display: flex; flex-direction: column; justify-content: center; min-height: 90vh; padding-top: 12rem; }
+.status-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(0, 240, 255, 0.1); padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(0, 240, 255, 0.3); font-size: 0.85rem; color: var(--cyan); margin-bottom: 2rem; width: fit-content; }
+.pulse-dot { width: 8px; height: 8px; background: var(--cyan); border-radius: 50%; box-shadow: 0 0 10px var(--cyan); animation: pulseDot 2s infinite; }
+@keyframes pulseDot { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
+
+.hero h1 { font-size: 2.5rem; color: var(--text-secondary); font-weight: 500; margin-bottom: 0.5rem; }
+.hero-role { font-size: 5.5rem; line-height: 1.1; margin-bottom: 1.5rem; font-weight: 700; }
+.hero-subtitle { font-size: 1.2rem; color: var(--text-secondary); max-width: 650px; margin-bottom: 3rem; font-weight: 300; line-height: 1.7; }
+.hero-cta { display: flex; gap: 1rem; }
+
+/* Glass Bento Cards (WITH MOUSE TRACKING) */
+.bento-grid { 
+    display: grid; 
+    /* Changes grid to a balanced 2x2 layout */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 1.5rem; 
+}
+
+.projects-grid {
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 1.5rem; 
+}
+.col-span-2 { grid-column: span 2; }
+
+.bento-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+}
+.bento-card::before {
+    content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), var(--spotlight), transparent 40%);
+    z-index: 1; opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+.bento-card:hover::before { opacity: 1; }
+.bento-card:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-3px); }
+
+.card-content { padding: 2.5rem; position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; }
+.card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; }
+.card-icon { font-size: 1.5rem; color: #fff; }
+.bento-card h3 { font-size: 1.4rem; margin-bottom: 0.8rem; color: #fff; font-weight: 600;}
+.bento-card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; }
+
+.center-content { justify-content: center; align-items: center; text-align: center; }
+.metric-number { font-size: 4rem; line-height: 1; margin-bottom: 0.5rem; font-weight: 700;}
+.metric-text { font-size: 0.95rem; color: var(--text-secondary); }
+
+/* Timeline Experience */
+.timeline { display: flex; flex-direction: column; gap: 2rem; margin-left: 1rem; border-left: 2px dashed rgba(255,255,255,0.1); padding-left: 2.5rem; position: relative; }
+.timeline-item { position: relative; }
+.timeline-marker { position: absolute; left: -2.9rem; top: 2rem; width: 14px; height: 14px; border-radius: 50%; background: var(--bg-dark); }
+.cyan-glow { border: 2px solid var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+.purple-glow { border: 2px solid var(--purple); box-shadow: 0 0 10px var(--purple); }
+
+.job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; }
+.job-header h3 { font-size: 1.25rem; color: #fff; font-weight: 600;}
+.job-header h4 { font-size: 1rem; font-weight: 500; margin-top: 5px; }
+.job-details { list-style-type: none; }
+.job-details li { color: var(--text-secondary); margin-bottom: 0.8rem; font-size: 0.95rem; position: relative; padding-left: 1.5rem; }
+.job-details li::before { content: "▹"; position: absolute; left: 0; color: #fff; opacity: 0.5; }
+
+/* Projects */
+.project-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.project-icon { font-size: 1.8rem; }
+.project-link { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; transition: 0.2s; background: rgba(255,255,255,0.05); padding: 5px 12px; border-radius: 15px; border: 1px solid var(--card-border); }
+.project-link:hover { color: #fff; border-color: rgba(255,255,255,0.2); }
+
+/* Footer */
+.footer { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+.footer-content { text-align: center; padding: 4rem; }
+.footer-content h2 { font-size: 2.5rem; margin-bottom: 2rem; color: #fff; }
+.footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+.footer-links a { transition: 0.3s; }
+.footer-links a:hover { transform: translateY(-3px); border-color: var(--cyan); color: #fff; }
+
+@media (max-width: 900px) {
+    .hero-role { font-size: 4rem; }
+    .bento-grid, .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    .col-span-2 { grid-column: span 1; }
+}
+@media (max-width: 600px) {
+    .hero-role { font-size: 3rem; }
+    .bento-grid, .projects-grid { grid-template-columns: 1fr; }
+    .job-header { flex-direction: column; gap: 15px; }
+    .nav-links { display: none; }
+    .hero-cta { flex-direction: column; }
+}
+/* Contact Form Styles */
+.contact-form { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1.5rem; 
+}
+
+.glass-input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    outline: none;
+    appearance: none; /* Removes default styling */
+    -webkit-appearance: none; /* Removes default styling on mobile */
+}
+
+.glass-input::placeholder { 
+    color: rgba(255, 255, 255, 0.3); 
+}
+
+.glass-input:focus {
+    border-color: var(--cyan);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+}
+
+/* Fix dropdown option colors so they are readable */
+select.glass-input option {
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    padding: 10px;
+}
+
+/* --- Forces pills to stack vertically like a list --- */
+.vertical-pills {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns them to the left */
+    gap: 12px; /* Space between each item */
+    margin-top: 1.5rem;
+}
